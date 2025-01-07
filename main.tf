@@ -10,11 +10,15 @@ variable "subnet_cidr_block" {
   description = "subnet cidr block"
 }
 
+variable "environment" {
+  description = "deployment environment"
+}
+
 resource "aws_vpc" "development-vpc" {
   cidr_block = var.vpc_cidr_block
 
   tags = {
-    Name: "development"
+    Name: var.environment
   }
 }
 
